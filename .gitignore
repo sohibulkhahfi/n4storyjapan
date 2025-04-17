@@ -1,0 +1,18 @@
+# Abaikan file judul
+jutul.txt
+# Abaikan file konfigurasi pribadi
+settings.json
+
+# Abaikan folder node_modules
+node_modules/
+
+# Abaikan file hasil build
+dist/
+build/
+
+# Abaikan file log
+*.log
+
+# Abaikan file dengan ekstensi tertentu
+*.env
+kanji_with_vietnam.json
