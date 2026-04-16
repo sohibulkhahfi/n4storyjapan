@@ -4,74 +4,115 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <style>
-    body {
-      font-family: "Hiragino Kaku Gothic ProN", "Meiryo", sans-serif;
-      background-color: #f9f9f9;
-      color: #333;
-      line-height: 1.8;
-      padding: 2em;
-    }
+body {
+  font-family: "Hiragino Kaku Gothic ProN", "Meiryo", sans-serif;
+  background: linear-gradient(135deg, #e0f2ff, #f9f9f9);
+  color: #333;
+  line-height: 1.9;
+  padding: 2em;
+}
 
-    div#content {
-      background-color: #fff;
-      padding: 2em;
-      max-width: 800px;
-      margin: 0 auto;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      font-size: 1.2em;
-    }
+/* Card utama */
+div#content {
+  background-color: #fff;
+  padding: 2em;
+  max-width: 850px;
+  margin: 0 auto;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  font-size: 1.2em;
+  position: relative;
+}
 
-    ruby {
-      ruby-position: over;
-      font-size: 1em;
-    }
+/* Judul */
+h1 {
+  font-size: 1.6em;
+  margin: 1.2em 0;
+  cursor: pointer;
+  text-align: center;
+  padding: 10px;
+  border-radius: 10px;
+  transition: all 0.25s ease;
+}
 
-    rt {
-      font-size: 0.6em;
-      color: #888;
-    }
+h1:hover {
+  background-color: #007acc;
+  color: white;
+}
 
-    .indo {
-      display: none;
-      color: #888;
-    }
+/* Story box */
+.story {
+  display: none;
+  padding: 1em 1.5em;
+  border-left: 4px solid #007acc;
+  margin-bottom: 1.5em;
+  background: #fdfdfd;
+  border-radius: 10px;
+}
 
-    h1 {
-      font-size: 1.5em;
-      margin: 1em 0;
-      cursor: pointer;
-      transition: color 0.2s;
-      text-align: center;
-    }
+.story.show {
+  display: block;
+  animation: fadeIn 0.3s ease-in-out;
+}
 
-    h1:hover {
-      color: #007acc;
-    }
+/* Furigana */
+ruby {
+  ruby-position: over;
+  ruby-align: center;
+}
 
-    .story {
-      display: none;
-      padding-left: 1em;
-      border-left: 3px solid #eee;
-      margin-bottom: 1.5em;
-    }
+rt {
+  font-size: 0.6em;
+  color: #007acc;
+  line-height: 1;
+}
 
-    .story.show {
-      display: block;
-      animation: fadeIn 0.3s ease-in-out;
-    }
+/* Indo */
+.indo {
+  display: none;
+  color: #888;
+  font-size: 0.9em;
+}
 
-        /* Gaya untuk tombol ketika aktif */
-        #toggleButton.active {
-            background-color: rgba(0, 0, 0, 0.1); /* Warna pudar */
-            color: grey; /* Teks berubah warna */
-            cursor: not-allowed; /* Menunjukkan bahwa tombol sudah aktif */
-        }
+/* Tombol umum */
+button {
+  padding: 8px 14px;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  font-size: 0.9em;
+  transition: 0.2s;
+}
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+/* Tombol posisi */
+#toggleButton {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  background: #007acc;
+  color: white;
+}
+
+#toggleFuri {
+  position: fixed;
+  top: 60px;
+  right: 15px;
+  background: #ff9800;
+  color: white;
+}
+
+/* Active state */
+button.active {
+  background: #ccc !important;
+  color: #666;
+  cursor: not-allowed;
+}
+
+/* Animasi */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px);}
+  to { opacity: 1; transform: translateY(0);}
+}
   </style>
     <title>Cerpen Jepang</title>
 </head>
@@ -79,6 +120,7 @@
     <div id="content">
 <!-- Tombol Toggle -->
 <button id="toggleButton" onclick="toggleIndo()" style="position: fixed; top: 10px; right: 10px; z-index: 1000;">indo</button>
+<button id="toggleFuri" onclick="toggleFurigana()">furi</button>
 
     <h1 onclick="toggleStory(0)">あたらしいともだち</h1>
     <div class="story">
@@ -657,7 +699,236 @@
       これからも、<ruby><rb>自分</rb><rt>じぶん</rt></ruby>の<ruby><rb>部屋</rb><rt>へや</rt></ruby>を<ruby><rb>大切</rb><rt>たいせつ</rt></ruby>にしたいです。
       <strong class="indo">Ke depannya, saya ingin terus menjaga kamar saya dengan baik.</strong>
   </div>
-  
+
+    <h1 onclick="toggleStory(10)">健さんの初めての料理</h1>
+<div class="story">
+  <h2><ruby><rb>健</rb><rt>たけし</rt></ruby>さんの<ruby><rb>初</rb><rt>はじ</rt></ruby>めての<ruby><rb>料理</rb><rt>りょうり</rt></ruby></h2>
+  <strong class="indo">(Masakan Pertama Takeshi)</strong>
+  <br><br>
+
+  <ruby><rb>健</rb><rt>たけし</rt></ruby>さんはインドネシアから<ruby><rb>来</rb><rt>き</rt></ruby>た<ruby><rb>留学生</rb><rt>りゅうがくせい</rt></ruby>です。
+  <strong class="indo">Takeshi adalah mahasiswa asing yang datang dari Indonesia.</strong>
+  <br>
+
+  <ruby><rb>今</rb><rt>いま</rt></ruby>、<ruby><rb>東京</rb><rt>とうきょう</rt></ruby>の<ruby><rb>大学</rb><rt>だいがく</rt></ruby>で<ruby><rb>勉強</rb><rt>べんきょう</rt></ruby>しています。
+  <strong class="indo">Sekarang, dia sedang belajar di universitas di Tokyo.</strong>
+  <br>
+
+  <ruby><rb>日本</rb><rt>にほん</rt></ruby>に<ruby><rb>来</rb><rt>き</rt></ruby>てから<ruby><rb>３ヶ月</rb><rt>さんかげつ</rt></ruby>が<ruby><rb>過</rb><rt>す</rt></ruby>ぎました。
+  <strong class="indo">Sudah berlalu 3 bulan sejak dia datang ke Jepang.</strong>
+  <br>
+
+  <ruby><rb>日本語</rb><rt>にほんご</rt></ruby>は<ruby><rb>少</rb><rt>すこ</rt></ruby>し<ruby><rb>上手</rb><rt>じょうず</rt></ruby>になりましたが、<ruby><rb>料理</rb><rt>りょうり</rt></ruby>はまだあまり<ruby><rb>得意</rb><rt>とくい</rt></ruby>ではありません。
+  <strong class="indo">Bahasa Jepangnya sudah menjadi sedikit mahir, tapi dia belum terlalu pandai memasak.</strong>
+  <br>
+
+  ある<ruby><rb>日</rb><rt>ひ</rt></ruby>、<ruby><rb>健</rb><rt>たけし</rt></ruby>さんは<ruby><rb>自分</rb><rt>じぶん</rt></ruby>でカレーを<ruby><rb>作</rb><rt>つく</rt></ruby>ることにしました。
+  <strong class="indo">Suatu hari, Takeshi memutuskan untuk membuat kari sendiri.</strong>
+  <br>
+
+  「<ruby><rb>日本</rb><rt>にほん</rt></ruby>のカレーは<ruby><rb>美味</rb><rt>おい</rt></ruby>しいですから、<ruby><rb>作</rb><rt>つく</rt></ruby>り<ruby><rb>方</rb><rt>かた</rt></ruby>を<ruby><rb>覚</rb><rt>おぼ</rt></ruby>えたいです」と<ruby><rb>健</rb><rt>たけし</rt></ruby>さんは<ruby><rb>思</rb><rt>おも</rt></ruby>いました。
+  <strong class="indo">"Karena kari Jepang enak, aku ingin menghafal cara membuatnya," pikir Takeshi.</strong>
+  <br><br>
+
+  <h3>🛒 <ruby><rb>買</rb><rt>か</rt></ruby>い<ruby><rb>物</rb><rt>もの</rt></ruby>に<ruby><rb>行</rb><rt>い</rt></ruby>く</h3>
+  <br>
+
+  まず、<ruby><rb>健</rb><rt>たけし</rt></ruby>さんは<ruby><rb>近</rb><rt>ちか</rt></ruby>くのスーパーへ<ruby><rb>行</rb><rt>い</rt></ruby>きました。
+  <strong class="indo">Pertama-tama, Takeshi pergi ke supermarket terdekat.</strong>
+  <br>
+
+  スーパーにはいろいろな<ruby><rb>材料</rb><rt>ざいりょう</rt></ruby>がありました。
+  <strong class="indo">Di supermarket ada bermacam-macam bahan makanan.</strong>
+  <br>
+
+  <ruby><rb>肉</rb><rt>にく</rt></ruby>：<ruby><rb>牛肉</rb><rt>ぎゅうにく</rt></ruby>と<ruby><rb>鶏肉</rb><rt>とりにく</rt></ruby>がありました。
+  <strong class="indo">Daging: Ada daging sapi dan daging ayam.</strong>
+  <br>
+
+  <ruby><rb>健</rb><rt>たけし</rt></ruby>さんは<ruby><rb>鶏肉</rb><rt>とりにく</rt></ruby>を<ruby><rb>選</rb><rt>えら</rt></ruby>びました。
+  <strong class="indo">Takeshi memilih daging ayam.</strong>
+  <br>
+
+  <ruby><rb>野菜</rb><rt>やさい</rt></ruby>：じゃがいも、にんじん、たまねぎを<ruby><rb>買</rb><rt>か</rt></ruby>いました。
+  <strong class="indo">Sayuran: Dia membeli kentang, wortel, dan bawang bombay.</strong>
+  <br>
+
+  カレールー：<ruby><rb>箱</rb><rt>はこ</rt></ruby>がたくさんあって、どれがいいか<ruby><rb>分</rb><rt>わ</rt></ruby>かりませんでした。
+  <strong class="indo">Bumbu kari (roux): Ada banyak kotak, jadi dia tidak tahu mana yang bagus.</strong>
+  <br>
+
+  <ruby><rb>健</rb><rt>たけし</rt></ruby>さんは<ruby><rb>店員</rb><rt>てんいん</rt></ruby>さんに<ruby><rb>聞</rb><rt>き</rt></ruby>きました。
+  <strong class="indo">Takeshi bertanya kepada pelayan toko.</strong>
+  <br>
+
+  「すみません、あまり<ruby><rb>辛</rb><rt>から</rt></ruby>くないルーはどれですか？」
+  <strong class="indo">"Permisi, bumbu yang tidak terlalu pedas yang mana?"</strong>
+  <br>
+
+  <ruby><rb>店員</rb><rt>てんいん</rt></ruby>さんは「<ruby><rb>甘口</rb><rt>あまくち</rt></ruby>」と<ruby><rb>書</rb><rt>か</rt></ruby>いてある<ruby><rb>箱</rb><rt>はこ</rt></ruby>を<ruby><rb>教</rb><rt>おし</rt></ruby>えてくれました。
+  <strong class="indo">Pelayan toko menunjukkan kotak yang bertuliskan "Amakuchi" (Rasa Manis/Tidak Pedas).</strong>
+  <br>
+
+  <ruby><rb>健</rb><rt>たけし</rt></ruby>さんは「ありがとうございます」と言って、それを買いました。
+  <strong class="indo">Takeshi berkata "Terima kasih," lalu membelinya.</strong>
+  <br><br>
+
+  <h3>🔪 <ruby><rb>台所</rb><rt>だいどころ</rt></ruby>で<ruby><rb>料理</rb><rt>りょうり</rt></ruby></h3>
+  <br>
+
+  アパートに<ruby><rb>帰</rb><rt>かえ</rt></ruby>ってから、<ruby><rb>料理</rb><rt>りょうり</rt></ruby>を<ruby><rb>始</rb><rt>はじ</rt></ruby>めました。
+  <strong class="indo">Setelah pulang ke apartemen, dia mulai memasak.</strong>
+  <br>
+
+  まず、<ruby><rb>野菜</rb><rt>やさい</rt></ruby>を<ruby><rb>洗</rb><rt>あら</rt></ruby>って、<ruby><rb>小</rb><rt>ちい</rt></ruby>さく<ruby><rb>切</rb><rt>き</rt></ruby>りました。
+  <strong class="indo">Pertama, dia mencuci sayuran lalu memotongnya kecil-kecil.</strong>
+  <br>
+
+  たまねぎを<ruby><rb>切</rb><rt>き</rt></ruby>っている<ruby><rb>時</rb><rt>とき</rt></ruby>、<ruby><rb>目</rb><rt>め</rt></ruby>が<ruby><rb>痛</rb><rt>いた</rt></ruby>くなりました。
+  <strong class="indo">Saat sedang memotong bawang bombay, matanya menjadi perih.</strong>
+  <br>
+
+  「うわあ、<ruby><rb>涙</rb><rt>なみだ</rt></ruby>が<ruby><rb>出</rb><rt>で</rt></ruby>ますね」と<ruby><rb>健</rb><rt>たけし</rt></ruby>さんはびっくりしました。
+  <strong class="indo">"Wah, air matanya keluar ya," Takeshi terkejut.</strong>
+  <br>
+
+  <ruby><rb>次</rb><rt>つぎ</rt></ruby>に、<ruby><rb>鍋</rb><rt>なべ</rt></ruby>に<ruby><rb>油</rb><rt>あぶら</rt></ruby>を<ruby><rb>入</rb><rt>い</rt></ruby>れて、<ruby><rb>肉</rb><rt>にく</rt></ruby>と<ruby><rb>野菜</rb><rt>やさい</rt></ruby>を<ruby><rb>炒</rb><rt>いた</rt></ruby>めました。
+  <strong class="indo">Selanjutnya, dia memasukkan minyak ke panci, lalu menumis daging dan sayuran.</strong>
+  <br>
+
+  その<ruby><rb>後</rb><rt>ご</rt></ruby>、<ruby><rb>水</rb><rt>みず</rt></ruby>を<ruby><rb>入</rb><rt>い</rt></ruby>れて<ruby><rb>煮</rb><rt>に</rt></ruby>ました。
+  <strong class="indo">Setelah itu, dia memasukkan air lalu merebusnya.</strong>
+  <br>
+
+  <ruby><rb>２０分</rb><rt>にじゅっぷん</rt></ruby>くらい<ruby><rb>待</rb><rt>ま</rt></ruby>ちました。
+  <strong class="indo">Dia menunggu sekitar 20 menit.</strong>
+  <br>
+
+  <ruby><rb>野菜</rb><rt>やさい</rt></ruby>が<ruby><rb>軟</rb><rt>やわ</rt></ruby>らかくなった<ruby><rb>時</rb><rt>とき</rt></ruby>、<ruby><rb>火</rb><rt>ひ</rt></ruby>を<ruby><rb>止</rb><rt>と</rt></ruby>めてルーを<ruby><rb>入</rb><rt>い</rt></ruby>れました。
+  <strong class="indo">Saat sayurannya sudah lunak, dia mematikan api lalu memasukkan bumbu karinya.</strong>
+  <br>
+
+  <ruby><rb>台所</rb><rt>だいどころ</rt></ruby>からとてもいい<ruby><rb>匂</rb><rt>にお</rt></ruby>いがしてきました。
+  <strong class="indo">Aroma yang sangat harum tercium dari dapur.</strong>
+  <br>
+
+  <ruby><rb>健</rb><rt>たけし</rt></ruby>さんは<ruby><rb>嬉</rb><rt>うれ</rt></ruby>しくなりました。
+  <strong class="indo">Takeshi menjadi senang.</strong>
+  <br><br>
+
+  <h3>🍛 いただきます！</h3>
+  <br>
+
+  <ruby><rb>最後</rb><rt>さいご</rt></ruby>に、お<ruby><rb>皿</rb><rt>さら</rt></ruby>にご<ruby><rb>飯</rb><rt>はん</rt></ruby>を<ruby><rb>盛</rb><rt>も</rt></ruby>って、カレーをかけました。
+  <strong class="indo">Terakhir, dia menyajikan nasi di piring dan menuangkan karinya.</strong>
+  <br>
+
+  「いただきます！」
+  <strong class="indo">"Selamat makan!"</strong>
+  <br>
+
+  <ruby><rb>健</rb><rt>たけし</rt></ruby>さんは<ruby><rb>一口</rb><rt>ひとくち</rt></ruby><ruby><rb>食</rb><rt>た</rt></ruby>べました。
+  <strong class="indo">Takeshi makan satu suap.</strong>
+  <br>
+
+  「<ruby><rb>美味</rb><rt>おい</rt></ruby>しい！」
+  <strong class="indo">"Enak!"</strong>
+  <br>
+
+  <ruby><rb>自分</rb><rt>じぶん</rt></ruby>で<ruby><rb>作</rb><rt>つく</rt></ruby>ったカレーは、レストランのカレーより<ruby><rb>美味</rb><rt>おい</rt></ruby>しく<ruby><rb>感</rb><rt>かん</rt></ruby>じました。
+  <strong class="indo">Kari yang dia buat sendiri terasa lebih enak daripada kari di restoran.</strong>
+  <br>
+
+  でも、<ruby><rb>少</rb><rt>すこ</rt></ruby>し<ruby><rb>問題</rb><rt>もんだい</rt></ruby>がありました。
+  <strong class="indo">Tapi, ada sedikit masalah.</strong>
+  <br>
+
+  じゃがいもが<ruby><rb>少</rb><rt>すこ</rt></ruby>し<ruby><rb>硬</rb><rt>かた</rt></ruby>かったです。
+  <strong class="indo">Kentangnya sedikit keras.</strong>
+  <br>
+
+  「<ruby><rb>次</rb><rt>つぎ</rt></ruby>は、もっと<ruby><rb>長</rb><rt>なが</rt></ruby>い<ruby><rb>時間</rb><rt>じかん</rt></ruby><ruby><rb>煮</rb><rt>に</rt></ruby>ようと<ruby><rb>思</rb><rt>おも</rt></ruby>います」と<ruby><rb>健</rb><rt>たけし</rt></ruby>さんは<ruby><rb>日記</rb><rt>にっき</rt></ruby>に<ruby><rb>書</rb><rt>か</rt></ruby>きました。
+  <strong class="indo">"Lain kali, aku berniat memasaknya lebih lama lagi," tulis Takeshi di buku hariannya.</strong>
+  <br>
+
+  それから、<ruby><rb>健</rb><rt>たけし</rt></ruby>さんは<ruby><rb>毎週</rb><rt>まいしゅう</rt></ruby><ruby><rb>日曜日</rb><rt>にちにょうび</rt></ruby>に<ruby><rb>新</rb><rt>あたら</rt></ruby>しい<ruby><rb>料理</rb><rt>りょうり</rt></ruby>を<ruby><rb>練習</rb><rt>れんしゅう</rt></ruby>することにしました。
+  <strong class="indo">Sejak saat itu, Takeshi memutuskan untuk berlatih masakan baru setiap hari Minggu.</strong>
+  <br>
+
+  いつか、<ruby><rb>日本</rb><rt>にほん</rt></ruby>の<ruby><rb>友達</rb><rt>ともだち</rt></ruby>を<ruby><rb>呼</rb><rt>よ</rt></ruby>んで、インドネシアの<ruby><rb>料理</rb><rt>りょうり</rt></ruby>も<ruby><rb>作</rb><rt>つく</rt></ruby>ってあげたいと<ruby><rb>思</rb><rt>おも</rt></ruby>っています。
+  <strong class="indo">Suatu saat nanti, dia ingin mengundang teman-teman Jepangnya dan memasakkan masakan Indonesia juga untuk mereka.</strong>
+</div>
+
+<h1 onclick="toggleStory(11)">バンダルランプンの大雨と洪水</h1>
+<div class="story">
+  <h2><ruby><rb>大雨</rb><rt>おおあめ</rt></ruby>と<ruby><rb>洪水</rb><rt>こうずい</rt></ruby></h2>
+  <strong class="indo">(Hujan Lebat dan Banjir)</strong>
+  <br><br>
+
+  2026<ruby><rb>年</rb><rt>ねん</rt></ruby>4<ruby><rb>月</rb><rt>しがつ</rt></ruby>14<ruby><rb>日</rb><rt>じゅうよっか</rt></ruby>の<ruby><rb>夜</rb><rt>よる</rt></ruby>、バンダルランプンでとても<ruby><rb>強</rb><rt>つよ</rt></ruby>い<ruby><rb>雨</rb><rt>あめ</rt></ruby>が<ruby><rb>降</rb><rt>ふ</rt></ruby>りました。
+  <strong class="indo">Pada malam 14 April 2026, hujan yang sangat kuat turun di Bandar Lampung.</strong>
+  <br>
+
+  たくさんの<ruby><rb>場所</rb><rt>ばしょ</rt></ruby>で<ruby><rb>水</rb><rt>みず</rt></ruby>があふれて、<ruby><rb>大変</rb><rt>たいへん</rt></ruby>なことになりました。
+  <strong class="indo">Di banyak tempat air meluap, dan menjadi situasi yang sulit/parah.</strong>
+  <br><br>
+
+  <h3>1. <ruby><rb>洪水</rb><rt>こうずい</rt></ruby>の<ruby><rb>様子</rb><rt>ようす</rt></ruby></h3>
+  <strong class="indo">(Kondisi Banjir)</strong>
+  <br>
+
+  <ruby><rb>雨</rb><rt>あめ</rt></ruby>は<ruby><rb>午後</rb><rt>ごご</rt></ruby>6<ruby><rb>時半</rb><rt>じはん</rt></ruby>ごろから<ruby><rb>激</rb><rt>はげ</rt></ruby>しくなりました。
+  <strong class="indo">Hujan menjadi deras sejak sekitar jam 6.30 sore.</strong>
+  <br>
+
+  <ruby><rb>市内</rb><rt>しない</rt></ruby>の21か<ruby><rb>所</rb><rt>しょ</rt></ruby>で<ruby><rb>洪水</rb><rt>こうずい</rt></ruby>が<ruby><rb>起</rb><rt>お</rt></ruby>きました。
+  <strong class="indo">Banjir terjadi di 21 titik di dalam kota.</strong>
+  <br>
+
+  <ruby><rb>水</rb><rt>みず</rt></ruby>の<ruby><rb>深</rb><rt>ふか</rt></ruby>さは、<ruby><rb>大</rb><rt>おお</rt></ruby>きい<ruby><rb>人</rb><rt>ひと</rt></ruby>の<ruby><rb>胸</rb><rt>むね</rt></ruby>ぐらい（<ruby><rb>約</rb><rt>やく</rt></ruby>120センチ）まで<ruby><rb>高</rb><rt>たか</rt></ruby>くなった<ruby><rb>所</rb><rt>ところ</rt></ruby>もあります。
+  <strong class="indo">Ada juga tempat-tempat di mana kedalaman air menjadi tinggi sampai sekitar dada orang dewasa (sekitar 120 cm).</strong>
+  <br><br>
+
+  <h3>2. <ruby><rb>避難</rb><rt>ひなん</rt></ruby>と<ruby><rb>被害</rb><rt>ひがい</rt></ruby></h3>
+  <strong class="indo">(Evakuasi dan Dampak)</strong>
+  <br>
+
+  たくさんの<ruby><rb>家</rb><rt>いえ</rt></ruby>に<ruby><rb>水</rb><rt>みず</rt></ruby>が<ruby><rb>入</rb><rt>はい</rt></ruby>りました。
+  <strong class="indo">Air masuk ke banyak rumah.</strong>
+  <br>
+
+  <ruby><rb>救助隊</rb><rt>きゅうじょたい</rt></ruby>はボートを<ruby><rb>使</rb><rt>つか</rt></ruby>って、109<ruby><rb>人</rb><rt>にん</rt></ruby>の<ruby><rb>人</rb><rt>ひと</rt></ruby>を<ruby><rb>助</rb><rt>たす</rt></ruby>けました。
+  <strong class="indo">Tim penyelamat menggunakan perahu dan menolong 109 orang.</strong>
+  <br>
+
+  <ruby><rb>特</rb><rt>とく</rt></ruby>に<ruby><rb>子供</rb><rt>こども</rt></ruby>やお<ruby><rb>年寄</rb><rt>としよ</rt></ruby>りを<ruby><rb>優先</rb><rt>ゆうせん</rt></ruby>して<ruby><rb>助</rb><rt>たす</rt></ruby>けました。
+  <strong class="indo">Khususnya, petugas memprioritaskan menolong anak-anak dan lansia.</strong>
+  <br>
+
+  <ruby><rb>残念</rb><rt>ざんねん</rt></ruby>なことに、<ruby><rb>崩</rb><rt>くず</rt></ruby>れた<ruby><rb>壁</rb><rt>かべ</rt></ruby>の<ruby><rb>下敷</rb><rt>したじ</rt></ruby>きになって、<ruby><rb>一人</rb><rt>ひとり</rt></ruby>の<ruby><rb>人</rb><rt>ひと</rt></ruby>が<ruby><rb>亡</rb><rt>な</rt></ruby>くなりました。
+  <strong class="indo">Sayangnya, satu orang meninggal dunia karena tertimpa dinding yang runtuh.</strong>
+  <br><br>
+
+  <h3>3. <ruby><rb>道路</rb><rt>どうろ</rt></ruby>の<ruby><rb>状況</rb><rt>じょうきょう</rt></ruby></h3>
+  <strong class="indo">(Kondisi Jalan Raya)</strong>
+  <br>
+
+  カルティニ<ruby><rb>通</rb><rt>どお</rt></ruby>りやラデン・インタ<ruby><rb>通</rb><rt>どお</rt></ruby>りなど、<ruby><rb>大</rb><rt>おお</rt></ruby>きな<ruby><rb>道</rb><rt>みち</rt></ruby>が<ruby><rb>川</rb><rt>かわ</rt></ruby>のようになりました。
+  <strong class="indo">Jalan-jalan besar seperti Jalan Kartini dan Jalan Raden Intan menjadi seperti sungai.</strong>
+  <br>
+
+  <ruby><rb>車</rb><rt>くるま</rt></ruby>が<ruby><rb>通</rb><rt>とお</rt></ruby>ることができなくなって、<ruby><rb>交通</rb><rt>こうつう</rt></ruby>が<ruby><rb>止</rb><rt>と</rt></ruby>まりました。
+  <strong class="indo">Mobil-mobil menjadi tidak bisa lewat, dan lalu lintas terhenti.</strong>
+  <br><br>
+
+  <h3>4. これからの<ruby><rb>注意</rb><rt>ちゅうい</rt></ruby></h3>
+  <strong class="indo">(Peringatan untuk Kedepannya)</strong>
+  <br>
+
+  BPBD（<ruby><rb>防災庁</rb><rt>ぼうさいちょう</rt></ruby>）は、「まだ<ruby><rb>強</rb><rt>つよ</rt></ruby>い<ruby><rb>雨</rb><rt>あめ</rt></ruby>が<ruby><rb>降</rb><rt>ふ</rt></ruby>るかもしれませんから、<ruby><rb>川</rb><rt>かわ</rt></ruby>の<ruby><rb>近</rb><rt>ちか</rt></ruby>くに<ruby><rb>住</rb><rt>す</rt></ruby>んでいる<ruby><rb>人</rb><rt>ひと</rt></ruby>は<ruby><rb>気</rb><rt>き</rt></ruby>をつけてください」と<ruby><rb>言</rb><rt>い</rt></ruby>っています。
+  <strong class="indo">BPBD mengatakan, "Karena hujan kuat mungkin masih akan turun, orang-orang yang tinggal di dekat sungai harap berhati-hati."</strong>
+  <br>
+</div>
 
     </div>
 
@@ -686,6 +957,17 @@
             // Menambahkan atau menghapus kelas active untuk tombol
             button.classList.toggle('active');
         }
+
+        function toggleFurigana() {
+    const rtElements = document.querySelectorAll('rt');
+    const button = document.getElementById('toggleFuri');
+
+    rtElements.forEach(rt => {
+        rt.style.display = (rt.style.display === 'none') ? '' : 'none';
+    });
+
+    button.classList.toggle('active');
+}
       </script>
 </body>
 </html>
